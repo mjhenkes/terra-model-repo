@@ -1,0 +1,58 @@
+{
+  "name": "terra-model-repo",
+  "version": "1.0.0",
+  "description": "A model repo for how terra applications should look",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjhenkes/terra-model-repo.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mjhenkes/terra-model-repo/issues"
+  },
+  "homepage": "https://github.com/mjhenkes/terra-model-repo#readme",
+  "eslintConfig": {
+    "extends": "@cerner/terra"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-terra"
+  },
+  "scripts": {
+    "clean": "rm package-lock.json; rm -rf node_modules",
+    "clean:install": "npm run clean && npm install",
+    "jest": "jest",
+    "jest:coverage": "jest --coverage",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:js": "eslint --ext .js,.jsx .",
+    "lint:scss": "stylelint src/**/*.scss",
+    "start": "webpack serve",
+    "start-prod": "webpack serve --mode=production"
+  },
+  "dependencies": {
+    "@cerner/terra-application": "cerner/terra-application#application-v2-integration",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-intl": "^2.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@cerner/browserslist-config-terra": "^3.1.0",
+    "@cerner/eslint-config-terra": "^4.0.0",
+    "@cerner/terra-cli": "^1.1.0",
+    "@cerner/terra-open-source-scripts": "^1.1.0",
+    "@cerner/webpack-config-terra": "^1.0.0",
+    "browserslist-config-terra": "^2.0.0",
+    "eslint": "^6.1.0",
+    "html-webpack-plugin": "^5.0.0",
+    "postcss": "^8.2.1",
+    "webpack": "^5.20.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.3.0"
+  }
+}
