@@ -7,9 +7,6 @@ const terraApplicationConfig = (env = {}) => ({
   entry: {
     index: './src/index.jsx',
   },
-  devServer: {
-    historyApiFallback: true,
-  },
   output: {
     publicPath: '/',
   },
@@ -17,7 +14,7 @@ const terraApplicationConfig = (env = {}) => ({
     new HtmlWebpackPlugin({
       lang: env.defaultLocale || 'en',
       filename: 'index.html',
-      template: './template/index.html',
+      template: '.src/template/index.html',
       rootElementId: 'root',
     }),
     new DefinePlugin({
