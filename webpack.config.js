@@ -14,7 +14,7 @@ const terraApplicationConfig = (env = {}) => ({
     new HtmlWebpackPlugin({
       lang: env.defaultLocale || 'en',
       filename: 'index.html',
-      template: '.src/template/index.html',
+      template: './src/template/index.html',
       rootElementId: 'root',
     }),
     new DefinePlugin({
