@@ -1,26 +1,15 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+
 import Application from '../../src/Application';
 
 describe('ThemeContextProvider', () => {
-  describe('Snapshots', () => {
-    it('should render', () => {
-      const wrapper = shallow(<Application />);
-      expect(wrapper).toMatchSnapshot();
-    });
+  it('should render', async () => {
+    render(<Application />);
 
-    it('should render with default config specified', () => {
-      const config = {
-        defaultLocale: 'es',
-        defaultTheme: 'my theme',
-        defaultDirection: 'rtl',
-      };
-      const wrapper = shallow((
-        <AppSettingsProvider settingsConfig={config}>
-          <div />
-        </AppSettingsProvider>
-      ));
-
-      expect(wrapper).toMatchSnapshot();
-    });
+    const title = await screen.findByTitle('application name');
+    expect(title).toHaveClass('title');
+    expect(title).toHaveAttribute('title', 'application name');
   });
 });

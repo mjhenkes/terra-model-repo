@@ -3,9 +3,6 @@ import React from 'react';
 import { dismissTransientPresentations } from '@cerner/terra-application/lib/utils/transient-presentation';
 
 import DemoApplicationNavigationLayout from './layouts/DemoApplicationNavigationLayout';
-// import SimpleApplicationLayout from './layouts/SimpleApplicationLayout';
-// import HeadlessApplicationLayout from './layouts/HeadlessApplicationLayout';
-
 import ConceptProvider from './providers/ConceptProvider';
 import SessionProvider from './providers/SessionProvider';
 
