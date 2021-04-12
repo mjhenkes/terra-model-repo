@@ -39,14 +39,15 @@
     "wdio": "terra wdio --themes clinical-lowlight-theme orion-fusion-theme terra-default-theme"
   },
   "dependencies": {
-    "@cerner/terra-application": "cerner/terra-application#application-v2-integration",
+    "@cerner/terra-application": "cerner/terra-application#bbabf724b66d370d84a3c0d465f1e8d6d07d35b0",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-intl": "^5.13.2",
     "terra-button": "^3.53.0",
     "terra-collapsible-menu-view": "^6.48.0",
-    "terra-icon": "^3.41.0"
+    "terra-icon": "^3.41.0",
+    "terra-toolbar": "^1.21.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",

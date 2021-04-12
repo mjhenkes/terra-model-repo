@@ -18,6 +18,7 @@ import ModalManagerIntegrationCard from './content/ModalManagerIntegrationCard';
 import NavigationItemCard from './content/NavigationItemCard';
 import ApplicationInfoCard from './content/ApplicationInfoCard';
 import InputCard from './content/InputCard';
+import DynamicHeadingCard from './content/DynamicHeadingCard';
 
 import Page2 from './Page2';
 
@@ -25,12 +26,23 @@ const propTypes = {
   onRequestClose: PropTypes.func,
 };
 
-const page1MetaData = { data: 'page-1' };
+// const page1MetaData = { data: 'page-1' };
 
 const Page1 = ({ onRequestClose }) => {
   const [showPage2, setShowPage2] = React.useState(false);
   const [showPageModal, setShowPageModal] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [metaData, setMetaData] = React.useState({ update_timestamp: Date.now() });
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setMetaData({ update_timestamp: Date.now() });
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const pageActions = (
     <PageActions>
@@ -48,7 +60,7 @@ const Page1 = ({ onRequestClose }) => {
     <Page
       pageKey="page-1"
       label="Page 1"
-      metaData={page1MetaData}
+      metaData={metaData}
       actions={pageActions}
       onRequestClose={onRequestClose}
       activityOverlay={isLoading ? <PageActivityOverlay variant="loading" /> : undefined}
@@ -65,6 +77,7 @@ const Page1 = ({ onRequestClose }) => {
           <p>Page 1 presents Page 2 due changes to its local state.</p>
           <Button text="Show Page 2" onClick={() => { setShowPage2(true); }} />
         </Card>
+        <DynamicHeadingCard />
         <NotificationBannersCard />
         <NotificationDialogCard />
         <LoadingOverlayCard onSetLoading={setIsLoading} />

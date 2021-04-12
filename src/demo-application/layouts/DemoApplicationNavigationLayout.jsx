@@ -16,6 +16,7 @@ import Page8 from '../pages/Page8';
 import NavBLayout from './NavBLayout';
 import NavCLayout from './NavCLayout';
 import NavDLayout from './NavDLayout';
+import NavELayout from './NavELayout';
 
 import ConceptBanner from '../shared/ConceptBanner';
 import NotAPage from '../shared/NotAPage';
@@ -23,7 +24,7 @@ import NotAPage from '../shared/NotAPage';
 const DemoApplicationNavigationLayout = () => {
   const conceptContext = React.useContext(ConceptContext);
 
-  const [navigationState, setNavigationState] = React.useState('nav-B');
+  const [navigationState, setNavigationState] = React.useState('nav-A');
   const [showSearchModal, setShowSearchModal] = React.useState(false);
   const [showDetailsModal, setShowDetailsModal] = React.useState(false);
 
@@ -81,7 +82,7 @@ const DemoApplicationNavigationLayout = () => {
             <NavigationItem
               navigationKey="nav-E"
               label="Nav E"
-              renderPage={() => <Page5 />}
+              renderLayout={() => <NavELayout />}
             />
             <NavigationItem
               navigationKey="nav-F"
