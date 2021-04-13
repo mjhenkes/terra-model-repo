@@ -8,7 +8,7 @@ const terraApplicationConfig = (env = {}) => ({
     index: './src/index.jsx',
   },
   output: {
-    publicPath: '/',
+    publicPath: '',
   },
   plugins: [
     new HtmlWebpackPlugin({
