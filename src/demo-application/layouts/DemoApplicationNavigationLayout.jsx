@@ -3,13 +3,12 @@ import IconSearch from 'terra-icon/lib/icon/IconSearch';
 import Button from 'terra-button';
 
 import ApplicationModal from '@cerner/terra-application/lib/application-modal/ApplicationModal';
-import { PrimaryNavigationLayout, NavigationItem } from '@cerner/terra-application/lib/layouts';
-import ApplicationConceptBannerProvider from '@cerner/terra-application/lib/application-container/ApplicationConceptBannerProvider';
+import PrimaryNavigationLayout, { NavigationItem } from '@cerner/terra-application/lib/primary-navigation-layout';
+import ApplicationConceptProvider from '@cerner/terra-application/lib/application-container/ApplicationConceptProvider';
 import ModalManager from '@cerner/terra-application/lib/modal-manager';
 import { ConceptContext } from '../providers/ConceptProvider';
 
 import Page1 from '../pages/Page1';
-import Page5 from '../pages/Page5';
 import Page6 from '../pages/Page6';
 import Page7 from '../pages/Page7';
 import Page8 from '../pages/Page8';
@@ -30,13 +29,14 @@ const DemoApplicationNavigationLayout = () => {
 
   return (
     <>
-      <ApplicationConceptBannerProvider
-        conceptDescription={`Concept ${conceptContext.data}`}
+      <ApplicationConceptProvider
+        description={`Concept ${conceptContext.data}`}
         layoutBanner={conceptContext.data ? <ConceptBanner data={conceptContext.data} onSelectDetails={() => { setShowDetailsModal(true); }} /> : undefined}
         modalBanner={conceptContext.data ? <ConceptBanner data={conceptContext.data} isModal /> : undefined}
       >
         <ModalManager>
           <PrimaryNavigationLayout
+            id="demo-application"
             extensionItems={[{
               key: 'search',
               icon: <IconSearch />,
@@ -50,10 +50,12 @@ const DemoApplicationNavigationLayout = () => {
             utilityItems={[{
               key: 'custom-utility-item',
               text: 'Custom Utility Item',
-              onSelect: () => {
-                console.log('Custom Utility Item selected');
-              },
             }]}
+            onSelectUtilityItem={(key) => {
+              if (key === 'custom-utility-item') {
+                console.log('Custom Utility Item selected');
+              }
+            }}
             onSelectHelp={() => {}}
             activeNavigationKey={conceptContext.data ? navigationState : undefined}
             onSelectNavigationItem={(key) => { setNavigationState(key); }}
@@ -114,7 +116,7 @@ const DemoApplicationNavigationLayout = () => {
             </div>
           </ApplicationModal>
         )}
-      </ApplicationConceptBannerProvider>
+      </ApplicationConceptProvider>
       {showSearchModal && (
         <ApplicationModal title="Search" size="large" onRequestClose={() => { setShowSearchModal(false); }}>
           <div style={{ padding: '1rem' }}>

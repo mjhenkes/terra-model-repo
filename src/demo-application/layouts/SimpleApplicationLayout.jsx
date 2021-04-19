@@ -3,8 +3,8 @@ import IconSearch from 'terra-icon/lib/icon/IconSearch';
 import Button from 'terra-button';
 
 import ApplicationModal from '@cerner/terra-application/lib/application-modal/ApplicationModal';
-import PrimaryNavigationLayout from '@cerner/terra-application/lib/layouts/primary-navigation-layout/PrimaryNavigationLayout';
-import ApplicationConceptBannerProvider from '@cerner/terra-application/lib/application-container/ApplicationConceptBannerProvider';
+import PrimaryNavigationLayout from '@cerner/terra-application/lib/primary-navigation-layout/PrimaryNavigationLayout';
+import ApplicationConceptProvider from '@cerner/terra-application/lib/application-container/ApplicationConceptProvider';
 import MainContainer from '@cerner/terra-application/lib/main-container';
 
 import { ConceptContext } from '../providers/ConceptProvider';
@@ -23,8 +23,8 @@ const SimpleApplicationLayout = () => {
 
   return (
     <>
-      <ApplicationConceptBannerProvider
-        conceptDescription={`Concept ${conceptContext.data}`}
+      <ApplicationConceptProvider
+        description={`Concept ${conceptContext.data}`}
         layoutBanner={conceptContext.data ? <ConceptBanner data={conceptContext.data} onSelectDetails={() => { setShowDetailsModal(true); }} /> : undefined}
         modalBanner={conceptContext.data ? <ConceptBanner data={conceptContext.data} isModal /> : undefined}
       >
@@ -69,7 +69,7 @@ const SimpleApplicationLayout = () => {
             </div>
           </ApplicationModal>
         )}
-      </ApplicationConceptBannerProvider>
+      </ApplicationConceptProvider>
       {showSearchModal && (
         <ApplicationModal title="Search" size="large" onRequestClose={() => { setShowSearchModal(false); }}>
           <div style={{ padding: '1rem' }}>

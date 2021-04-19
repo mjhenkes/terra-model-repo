@@ -1,13 +1,10 @@
 import React from 'react';
 import Button from 'terra-button';
 
-import PrimaryNavigationLayout from '@cerner/terra-application/lib/layouts/primary-navigation-layout/PrimaryNavigationLayout';
+import PrimaryNavigationLayout from '@cerner/terra-application/lib/primary-navigation-layout/PrimaryNavigationLayout';
 import SessionUserContext from '@cerner/terra-application/lib/session/SessionUserContext';
-import SessionActionsContext from '@cerner/terra-application/lib/session/SessionActionsContext';
-import { ApplicationContainerErrorBoundary } from '@cerner/terra-application/lib/application-container';
 import { UnsavedChangesPromptCheckpoint } from '@cerner/terra-application/lib/unsaved-changes-prompt';
 import { ApplicationIntlContext } from '@cerner/terra-application/lib/application-intl';
-import WindowManager from '@cerner/terra-application/lib/utils/window-manager/window-manager';
 
 const propTypes = {};
 
@@ -82,18 +79,7 @@ const SessionProvider = ({ children }) => {
   if (state.isLoggedIn) {
     content = (
       <SessionUserContext.Provider value={userContextValue}>
-        <SessionActionsContext.Provider value={sessionActionsContextValue}>
-          <ApplicationContainerErrorBoundary errorViewButtonAttrs={[{
-            text: 'Reload',
-            onClick: () => { WindowManager.forceLocationReload(); },
-          }, {
-            text: 'Logout',
-            onClick: () => { sessionActionsContextValue.logout(); },
-          }]}
-          >
-            {children}
-          </ApplicationContainerErrorBoundary>
-        </SessionActionsContext.Provider>
+        {children}
       </SessionUserContext.Provider>
     );
   }
@@ -101,7 +87,9 @@ const SessionProvider = ({ children }) => {
   return (
     <UnsavedChangesPromptCheckpoint ref={(ref) => { checkpointRef.current = ref; }}>
       {content || (
-        <PrimaryNavigationLayout>
+        <PrimaryNavigationLayout
+          id="demo-app-login-page"
+        >
           <main style={style}>
             <h1>Not Logged In</h1>
             <br />

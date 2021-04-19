@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { dismissTransientPresentations } from '@cerner/terra-application/lib/utils/transient-presentation';
+import { dismissTransientPresentations } from '@cerner/terra-application/lib/utils/transient-presentations';
 
 import DemoApplicationNavigationLayout from './layouts/DemoApplicationNavigationLayout';
 import ConceptProvider from './providers/ConceptProvider';
