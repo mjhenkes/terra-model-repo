@@ -40,7 +40,7 @@
     "wdio": "terra wdio --themes clinical-lowlight-theme orion-fusion-theme terra-default-theme"
   },
   "dependencies": {
-    "@cerner/terra-application": "cerner/terra-application#54cd83b4aa3511d316005fdb36d2040bc684d07b",
+    "@cerner/terra-application": "cerner/terra-application#869470a0cc93cb4eb4e3494ebe543c4405441ca4",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
